@@ -1,0 +1,11 @@
+{%extends 'base.html' %}
+
+{% block main %}
+    {% if username %}  
+    <h1>Привет, {{ username }}!</h1>  
+	<p>Тут ты можешь <a href="logout">выйти</a>.</p>  
+    {% else %}  
+    <h2 class="text-center">Для работы необходимо <a href="{% url 'login' %}" >авторизироваться</a>!</h2>  
+    {% endif %}  
+{% endblock%}
+

@@ -1,0 +1,46 @@
+{% extends  'nav.html' %}
+{% block main %}
+
+<!--{% for question in poll.question.all %}
+      <ul>
+        <p>Вопрос № {{forloop.counter}} : {{ question.title }}</p>
+        {% for choice in question.choice_set.all %}
+        <li>{{ choice.title }}</li>
+       {% endfor %}
+      </ul>
+      {% empty %}
+      empty list!
+{% endfor %}-->
+<form action="{% url 'common:vote' poll.id %}" method="post">
+    <div class="alert alert-light" role="alert">
+        <h2>Опрос: {{poll.title}}</h2>
+    </div>
+    {% csrf_token %}
+    {% for question in poll.question.all %}
+    <div class="form-group">
+        <h3>{{ question.title }}</h3>
+        {% for choice in question.choice_set.all %}
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="{{question.id}}" id="{{ choice.id }}" value="{{ choice.id }}" checked>
+            <label class="form-check-label" for="{{ choice.id }}">
+                {{ choice.title }}
+            </label>
+          </div>
+          {% endfor %}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Проголосовать</button>
+  </form>
+{% endblock %}
+<!--<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>-->

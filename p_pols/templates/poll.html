@@ -1,0 +1,31 @@
+{% extends  'nav.html' %}
+
+{% block main %}
+{% if polls %}
+Доступно для прохождения опросов: {{ polls|length }}
+<br>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Наименование</th>
+        <th scope="col">Дата публикации</th>
+        <th scope="col">Пройти</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for poll in polls %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{poll.title}}</td>
+        <td>{{poll.pub_date}}</td>
+        <!--<td><a href="/{{poll.id}}/">пройти</a></td>-->
+        <td><a href="{% url 'common:detail' poll.id %}">пройти</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p>Доступных для прохождения опросов - нет.</p>
+  {% endif %}
+{% endblock %}
