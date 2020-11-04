@@ -25,7 +25,7 @@ LOGOUT_REDIRECT_URL = reverse_lazy('common:index')
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'e4!#x&89xxylg14-ds3lcro5&wjjv6sk_+mqx6%7oz@n2817-j'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -127,3 +127,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_URL = '/asset-v1:SkillFactory+PWS-9.5+06DEC2019+type@asset+block@'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
