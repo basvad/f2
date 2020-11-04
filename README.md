@@ -1,6 +1,6 @@
 # f2
 * Для запуска проекта:
-* Скопировать даный репозиторий.
+* Скопировать данный репозиторий.
 * Установить зависимости из requirements.txt: pip install -r requirements.txt.
 * Создать миграции: python manage.py makemigrations.
 * Провести миграции БД: python manage.py migrate
