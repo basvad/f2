@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 TIME_ZONE = 'Europe/Moscow'
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pacific-shore-06440.herokuapp.com']
 
 
 # Application definition
